@@ -1,7 +1,7 @@
-import "../styles/Home.css";
+import { useNavigate } from "react-router";
 import Marker from "../components/Marker";
 import { markerData } from "../data/markerData";
-import { useNavigate } from "react-router";
+import "../styles/Home.css";
 
 function Home() {
 	const navigate = useNavigate();
