@@ -6,6 +6,19 @@ import { useNavigate } from "react-router";
 function Home() {
 	const navigate = useNavigate();
 
+	const routesByLabel: Record<string, string> = {
+		"A propos": "/about",
+		Skills: "/skills",
+		Projets: "/projects",
+		Contact: "/contact",
+		CV: "/cv",
+	};
+
+	const handleClick = (label: string) => {
+		const route = routesByLabel[label];
+		if (route) navigate(route);
+	};
+
 	return (
 		<div className="map-container">
 			<div className="header-overlay">
