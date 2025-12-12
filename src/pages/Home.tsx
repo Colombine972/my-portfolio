@@ -14,7 +14,7 @@ function Home() {
 		CV: "/cv",
 	};
 
-	const handleClick = (label: string) => {
+	const navigateByClick = (label: string) => {
 		const route = routesByLabel[label];
 		if (route) navigate(route);
 	};
@@ -33,7 +33,7 @@ function Home() {
 					top={marker.top}
 					left={marker.left}
 					label={marker.label}
-					onClick={() => handleClick(marker.label)}
+					onClick={() => navigateByClick(marker.label)}
 				/>
 			))}
 		</div>
