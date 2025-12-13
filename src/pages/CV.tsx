@@ -33,6 +33,7 @@ function CV() {
 
 			{/* DOCUMENT */}
 			<section className="cv-document">
+				<div className="cv-document-fade" />
 				<div className="cv-frame">
 					<iframe
 						src="/CV_Cindy_COLOMBINE.pdf#toolbar=0"
@@ -51,7 +52,33 @@ function CV() {
 
 			{/* BOTTOM IMAGE */}
 			<section className="japan-bottom">
+				<div className="japan-bottom-fade-top" />
 				<div className="japan-bottom-overlay" />
+				<div className="cv-glass-card">
+					<h3>Envie d’échanger ?</h3>
+					<p>Télécharger mon CV, l’imprimer ou planifier un rendez-vous.</p>
+
+					<div className="cv-glass-actions">
+						<a
+							href="/CV_Cindy_COLOMBINE.pdf"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Télécharger le CV
+						</a>
+
+						<button onClick={() => window.print()}>Imprimer le CV</button>
+
+						<a
+							href="https://calendly.com/TON-LIEN-CALENDLY"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="primary"
+						>
+							Prendre rendez-vous
+						</a>
+					</div>
+				</div>
 			</section>
 		</div>
 	);
