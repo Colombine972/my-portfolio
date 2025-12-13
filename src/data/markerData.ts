@@ -19,14 +19,14 @@ export const markerData = [
 	},
 	{
 		id: "marker4",
-		top: "64%",
-		left: "72%",
+		top: "55%",
+		left: "48%",
 		label: "Contact",
 	},
 	{
 		id: "marker5",
-		top: "55%",
-		left: "48%",
+		top: "64%",
+		left: "72%",
 		label: "CV",
 	},
 ];

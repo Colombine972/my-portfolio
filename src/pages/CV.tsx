@@ -40,14 +40,6 @@ function CV() {
 						title="CV de Cindy Colombine"
 					/>
 				</div>
-				<a
-					href="/CV_Cindy_COLOMBINE.pdf"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="cv-download"
-				>
-					Télécharger le CV
-				</a>
 			</section>
 
 			{/* BOTTOM IMAGE */}
@@ -56,7 +48,7 @@ function CV() {
 				<div className="japan-bottom-overlay" />
 				<div className="cv-glass-card">
 					<h3>Envie d’échanger ?</h3>
-					<p>Télécharger mon CV, l’imprimer ou planifier un rendez-vous.</p>
+					<p>Télécharger mon CV ou planifier un rendez-vous.</p>
 
 					<div className="cv-glass-actions">
 						<a
@@ -67,15 +59,13 @@ function CV() {
 							Télécharger le CV
 						</a>
 
-						<button onClick={() => window.print()}>Imprimer le CV</button>
-
 						<a
-							href="https://calendly.com/TON-LIEN-CALENDLY"
+							href="https://calendly.com/colombine-cindy/echange-autour-de-mon-cv"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="primary"
 						>
-							Prendre rendez-vous
+							Echange de 15 min autour de mon CV
 						</a>
 					</div>
 				</div>
