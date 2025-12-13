@@ -4,57 +4,34 @@ import "../styles/CV.css";
 function CV() {
 	return (
 		<div className="cv-journey">
-			{/* HERO */}
+			{/* HERO TOP */}
 			<section className="cv-hero">
-				<div className="cv-hero-overlay" />
-
-				<div className="cv-hero-content">
-					<Link to="/" className="cv-back">
-						← Retour à la carte
-					</Link>
-
-					<h1 className="cv-title">MON PARCOURS</h1>
-					<p className="cv-subtitle">Un voyage dans le développement web</p>
-
-					<div className="cv-cards">
-						<div className="cv-card">🎓 Formation</div>
-						<div className="cv-card">⚛️ Stack</div>
-						<div className="cv-card">💼 Projets</div>
-						<div className="cv-card">🎯 Objectif</div>
-					</div>
-				</div>
+				<h1 className="japan-title">JAPAN</h1>
+				<div className="cv-image">IMAGE</div>
+				<div className="cv-overlay" />
+				<div className="cv-hero-fade" />
 			</section>
+			<div className="cv-hero-content">
+				<Link to="/" className="cv-back">
+					← Retour à la carte
+				</Link>
+			</div>
 
-			{/* ITINÉRAIRE */}
-			<section className="cv-itinerary">
-				<h2>Itinéraire professionnel</h2>
-
-				<div className="timeline">
-					<div className="timeline-item">
-						<span className="timeline-date">2023</span>
-						<p>Découverte du développement web</p>
-					</div>
-
-					<div className="timeline-item">
-						<span className="timeline-date">2024</span>
-						<p>Formation Full Stack – React, TypeScript, Node.js</p>
-					</div>
-
-					<div className="timeline-item">
-						<span className="timeline-date">2025</span>
-						<p>Création de projets & recherche de poste</p>
-					</div>
-				</div>
+			{/* ABOUT TITLE */}
+			<section className="about-section">
+				<div className="about-line" />
+				<h2 className="about-title">DOCUMENT DE VOYAGE</h2>
+				<div className="about-line" />
 			</section>
 
 			{/* DOCUMENT */}
 			<section className="cv-document">
-				<h2>Document de voyage</h2>
-
 				<div className="cv-frame">
-					<iframe src="/CV_Cindy_COLOMBINE.pdf" title="CV de Cindy Colombine" />
+					<iframe
+						src="/CV_Cindy_COLOMBINE.pdf#toolbar=0"
+						title="CV de Cindy Colombine"
+					/>
 				</div>
-
 				<a
 					href="/CV_Cindy_COLOMBINE.pdf"
 					target="_blank"
@@ -63,6 +40,11 @@ function CV() {
 				>
 					Télécharger le CV
 				</a>
+			</section>
+
+			{/* BOTTOM IMAGE */}
+			<section className="japan-bottom">
+				<div className="japan-bottom-overlay" />
 			</section>
 		</div>
 	);

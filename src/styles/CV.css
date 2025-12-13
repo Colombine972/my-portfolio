@@ -9,19 +9,44 @@
 .cv-hero {
 	position: relative;
 	min-height: 100vh;
-	background-image: url("/background-voyage.jpg"); /* image carte/voyage */
-	background-size: cover;
-	background-position: center;
+	overflow: hidden;
 }
 
-.cv-hero-overlay {
+.japan-title {
+	color: rgba(255, 255, 255, 0.6);
+	mix-blend-mode: soft-light;
+}
+
+.cv-image {
+	position: absolute;
+	inset: 0;
+	background-image: url("/opera.png");
+	background-size: cover;
+	background-position: center;
+	z-index: 2; /* DEVANT LE TEXTE */
+	background-color: red;
+}
+
+.cv-overlay {
 	position: absolute;
 	inset: 0;
 	background: linear-gradient(
 		to bottom,
-		rgba(0, 0, 0, 0.3),
-		rgba(0, 0, 0, 0.85)
+		rgba(0, 0, 0, 0.15),
+		rgba(0, 0, 0, 0.15)
 	);
+	z-index: 3;
+}
+
+.cv-hero-fade {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 40%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1.7));
+	z-index: 4;
+	pointer-events: none;
 }
 
 .cv-hero-content {
@@ -41,72 +66,34 @@
 	opacity: 0.8;
 }
 
-.cv-title {
-	font-size: 5rem;
-	letter-spacing: 0.3em;
-	margin: 0;
-}
-
-.cv-subtitle {
-	font-size: 1.2rem;
-	opacity: 0.85;
-	margin-bottom: 3rem;
-}
-
-/* CARDS */
-.cv-cards {
+/*ABOUT TITLE */
+.about-section {
 	display: flex;
-	gap: 1rem;
-	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	padding: 6rem 2rem;
+	background: black;
 }
 
-.cv-card {
-	background: rgba(255, 255, 255, 0.12);
-	backdrop-filter: blur(8px);
-	border-radius: 12px;
-	padding: 1rem 1.5rem;
-	font-size: 0.9rem;
-	border: 1px solid rgba(255, 255, 255, 0.25);
+.about-title {
+	font-size: 1.8rem;
+	letter-spacing: 0.2em;
+	white-space: nowrap;
 }
 
-/* ITINÉRAIRE */
-.cv-itinerary {
-	background: #000;
-	padding: 5rem 2rem;
-	max-width: 1100px;
-	margin: 0 auto;
-}
-
-.cv-itinerary h2 {
-	font-size: 2rem;
-	margin-bottom: 3rem;
-}
-
-.timeline {
-	border-left: 2px solid rgba(255, 255, 255, 0.3);
-	padding-left: 2rem;
-}
-
-.timeline-item {
-	margin-bottom: 2.5rem;
-}
-
-.timeline-date {
-	font-weight: bold;
-	color: #f5d58d;
-	display: block;
-	margin-bottom: 0.3rem;
+.about-line {
+	flex: 1;
+	max-width: 200px;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.4);
 }
 
 /* DOCUMENT */
 .cv-document {
-	background: #111;
+	background: #000;
 	padding: 5rem 2rem;
 	text-align: center;
-}
-
-.cv-document h2 {
-	margin-bottom: 2rem;
 }
 
 .cv-frame {
@@ -119,7 +106,7 @@
 
 .cv-frame iframe {
 	width: 100%;
-	height: 90vh;
+	height: 125vh;
 	border: none;
 	background: white;
 }
@@ -133,4 +120,19 @@
 	border-radius: 999px;
 	text-decoration: none;
 	font-weight: 600;
+}
+
+/* BOTTOM IMAGE */
+.japan-bottom {
+	position: relative;
+	height: 70vh;
+	background-image: url("/canyon.png"); /* image fond bas */
+	background-size: cover;
+	background-position: center;
+}
+
+.japan-bottom-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
 }
