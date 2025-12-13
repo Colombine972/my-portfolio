@@ -6,8 +6,15 @@ function CV() {
 		<div className="cv-journey">
 			{/* HERO TOP */}
 			<section className="cv-hero">
-				<h1 className="japan-title">JAPAN</h1>
-				<div className="cv-image">IMAGE</div>
+				<h1 className="japan-title">
+					DEVELOPPEUR <br />
+					WEB
+				</h1>
+				<h1 className="full-title">
+					FULL <br />
+					STACK
+				</h1>
+				<div className="cv-image"></div>
 				<div className="cv-overlay" />
 				<div className="cv-hero-fade" />
 			</section>
