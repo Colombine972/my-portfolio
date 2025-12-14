@@ -1,9 +1,16 @@
 import { Link } from "react-router";
 import "../styles/CV.css";
 import { useState } from "react";
+import Modal from "../components/Modal";
 
 function CV() {
 	const [isOpen, setIsOpen] = useState(false);
+	const [popupContent, setPopupContent] = useState(null);
+
+	const openPopup = (content) => {
+		setPopupContent(content);
+		setIsOpen(true);
+	};
 
 	return (
 		<div className="cv-journey">
@@ -70,6 +77,23 @@ function CV() {
 						>
 							Echange de 15 min autour de mon CV
 						</a>
+						<button
+							onClick={() =>
+								openPopup(
+									<iframe
+										src="https://calendly.com/colombine-cindy/echange-autour-de-mon-cv"
+										title="Calendly"
+										style={{ width: "100%", height: "80vh", border: "none" }}
+									/>,
+								)
+							}
+							className="primary"
+						>
+							Échange de 15 min autour de mon CV
+						</button>
+						<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+							{popupContent}
+						</Modal>
 					</div>
 				</div>
 			</section>
