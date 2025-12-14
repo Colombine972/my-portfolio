@@ -1,0 +1,36 @@
+.formulaire {
+	display: flex;
+	flex-direction: column;
+}
+
+.formulaire input,
+.formulaire textarea {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+	padding: 4px 4px;
+	color: white;
+	font-size: 1rem;
+	margin-bottom: 0.6rem;
+	outline: none; /* supprime le contour bleu */
+}
+
+.formulaire button {
+	margin-top: 0.5rem;
+	background: white;
+	color: black;
+	font-weight: 600;
+}
+
+.formulaire textarea {
+	padding-top: 9px;
+}
+
+.formulaire input {
+	padding-top: 7px;
+}
+
+.formulaire input:focus,
+.formulaire textarea:focus {
+	border-bottom: 2px solid #fff;
+}
