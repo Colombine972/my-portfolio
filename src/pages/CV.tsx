@@ -6,7 +6,7 @@ function CV() {
 		<div className="cv-journey">
 			{/* HERO TOP */}
 			<section className="cv-hero">
-				<h1 className="japan-title">
+				<h1 className="australie-title">
 					DEVELOPPEUR <br />
 					WEB
 				</h1>
