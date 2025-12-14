@@ -154,7 +154,8 @@
 }
 
 /* BOTTOM IMAGE */
-.japan-bottom {
+.australie-bottom {
+	/* affichage image */
 	position: relative;
 	height: 70vh;
 	margin-top: -8rem; /* 👈 LA CLÉ */
@@ -164,7 +165,8 @@
 	z-index: 1;
 }
 
-.japan-bottom-fade-top {
+.australie-bottom-fade-top {
+	/* le fondu noir et l'image*/
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -175,7 +177,8 @@
 	pointer-events: none;
 }
 
-.japan-bottom-overlay {
+.australie-bottom-overlay {
+	/* l'image teinté*/
 	position: absolute;
 	inset: 0;
 	z-index: 3;

@@ -15,7 +15,7 @@
 
 	width: 90%;
 	max-width: 900px;
-	max-height: 42vh;
+	height: 42vh;
 
 	overflow: hidden;
 	display: flex;
@@ -26,7 +26,7 @@
 	position: absolute;
 	top: 12px;
 	right: 12px;
-	z-index: 10;
+	z-index: 2;
 
 	background: rgba(0, 0, 0, 0.6);
 	color: black;
@@ -37,4 +37,11 @@
 
 	font-size: 1.2rem;
 	cursor: pointer;
+}
+
+.modal-iframe {
+	width: 100%;
+	flex: 1;
+	border: none;
+	display: block;
 }

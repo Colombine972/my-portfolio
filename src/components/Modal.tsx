@@ -5,11 +5,12 @@ function Modal({ isOpen, onClose, children }) {
 
 	return (
 		<div className="modal-overlay" onClick={onClose}>
-			<div className="modal-content" onClick={(e) => e.stopPropagation()}>
-				<button className="modal-close" onClick={onClose}>
-					×
-				</button>
+			{/* CROIX AU NIVEAU DE L'OVERLAY */}
+			<button className="modal-close" onClick={onClose} aria-label="Fermer">
+				×
+			</button>
 
+			<div className="modal-content" onClick={(e) => e.stopPropagation()}>
 				{children}
 			</div>
 		</div>

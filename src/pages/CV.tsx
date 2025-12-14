@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import "../styles/CV.css";
 import { useState } from "react";
 import Modal from "../components/Modal";
+import ContactForm from "../components/ContactForm";
 
 function CV() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -53,12 +54,12 @@ function CV() {
 			</section>
 
 			{/* BOTTOM IMAGE */}
-			<section className="japan-bottom">
-				<div className="japan-bottom-fade-top" />
-				<div className="japan-bottom-overlay" />
+			<section className="australie-bottom">
+				<div className="australie-bottom-fade-top" />
+				<div className="australie-bottom-overlay" />
 				<div className="cv-glass-card">
 					<h3>Envie d’échanger ?</h3>
-					<p>Télécharger mon CV ou planifier un rendez-vous.</p>
+					<p>Télécharger mon CV, planifier un rendez-vous ou commenter.</p>
 
 					<div className="cv-glass-actions">
 						<a
@@ -68,22 +69,13 @@ function CV() {
 						>
 							Télécharger le CV
 						</a>
-
-						<a
-							href="https://calendly.com/colombine-cindy/echange-autour-de-mon-cv"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="primary"
-						>
-							Echange de 15 min autour de mon CV
-						</a>
 						<button
 							onClick={() =>
 								openPopup(
 									<iframe
 										src="https://calendly.com/colombine-cindy/echange-autour-de-mon-cv"
 										title="Calendly"
-										style={{ width: "100%", height: "80vh", border: "none" }}
+										className="modal-iframe"
 									/>,
 								)
 							}
@@ -94,6 +86,7 @@ function CV() {
 						<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
 							{popupContent}
 						</Modal>
+						<ContactForm />
 					</div>
 				</div>
 			</section>
