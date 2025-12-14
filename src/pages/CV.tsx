@@ -1,7 +1,10 @@
 import { Link } from "react-router";
 import "../styles/CV.css";
+import { useState } from "react";
 
 function CV() {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<div className="cv-journey">
 			{/* HERO TOP */}
