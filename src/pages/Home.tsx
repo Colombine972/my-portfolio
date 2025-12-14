@@ -1,10 +1,23 @@
-import "../styles/Home.css";
+import { useNavigate } from "react-router";
 import Marker from "../components/Marker";
 import { markerData } from "../data/markerData";
-import { useNavigate } from "react-router";
+import "../styles/Home.css";
 
 function Home() {
 	const navigate = useNavigate();
+
+	const routesByLabel: Record<string, string> = {
+		"A propos": "/about",
+		Skills: "/skills",
+		Projets: "/projects",
+		Contact: "/contact",
+		CV: "/cv",
+	};
+
+	const navigateByClick = (label: string) => {
+		const route = routesByLabel[label];
+		if (route) navigate(route);
+	};
 
 	return (
 		<div className="map-container">
@@ -20,7 +33,7 @@ function Home() {
 					top={marker.top}
 					left={marker.left}
 					label={marker.label}
-					onClick={() => handleClick(marker.label)}
+					onClick={() => navigateByClick(marker.label)}
 				/>
 			))}
 		</div>

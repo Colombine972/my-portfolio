@@ -2,16 +2,29 @@ import { useState } from "react";
 import AirportTooltip from "./AirportTooltip";
 import "../styles/Marker.css";
 
-function Marker({ top, left, label, onClick }) {
+interface MarkerProps {
+	top: string;
+	left: string;
+	label: string;
+	onClick: () => void;
+}
+
+function Marker({ top, left, label, onClick }: MarkerProps) {
 	const [hover, setHover] = useState(false);
 
 	return (
-		<div
+		<button
+			type="button"
 			className="marker-container"
 			style={{ top, left }}
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
 			onClick={onClick}
+			onKeyDown={(event) => {
+				if (event.key === "Enter" || event.key === " ") {
+					onClick();
+				}
+			}}
 		>
 			<img
 				src="/pointInteractif.png"
@@ -21,7 +34,7 @@ function Marker({ top, left, label, onClick }) {
 
 			{/* Infobulle */}
 			{hover && <AirportTooltip label={label} />}
-		</div>
+		</button>
 	);
 }
 
