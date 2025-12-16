@@ -16,7 +16,7 @@ function Marker({ top, left, label, onClick }: MarkerProps) {
 		<button
 			type="button"
 			className="marker-container"
-			style={{ top, left }}
+			style={{ top: `${top}%`, left: `${left}%` }}
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
 			onClick={onClick}
