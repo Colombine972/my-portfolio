@@ -5,29 +5,34 @@ import { markerData } from "../data/markerData";
 import FlightAnimation from "../components/FlightAnimation";
 import "../styles/Home.css";
 
+type Section = "outside" | "about" | "skills" | "projects" | "contact" | "cv";
+
 function Home() {
 	const navigate = useNavigate();
 	const [activeRouteId, setActiveRouteId] = useState<string | null>(null);
 
-	const markerConfig: Record<string, { routeId: string; path: string }> = {
+	const [currentSection, setCurrentSection] = useState<Section>("outside");
+
+	const [animationKey, setAnimationKey] = useState(0);
+	const markerConfig: Record<string, { section: Section; path: string }> = {
 		"A propos": {
-			routeId: "route-about-skills",
+			section: "about",
 			path: "/about",
 		},
 		Skills: {
-			routeId: "route-skills-projects",
+			section: "skills",
 			path: "/skills",
 		},
 		Projets: {
-			routeId: "route-projects-contact",
+			section: "projects",
 			path: "/projects",
 		},
 		Contact: {
-			routeId: "route-contact-cv",
+			section: "contact",
 			path: "/contact",
 		},
 		CV: {
-			routeId: "route-contact-cv",
+			section: "cv",
 			path: "/cv",
 		},
 	};
@@ -36,11 +41,19 @@ function Home() {
 		const config = markerConfig[label];
 		if (!config) return;
 
-		setActiveRouteId(config.routeId);
+		const targetSection = config.section;
 
-		setTimeout(() => {
-			navigate(config.path);
-		}, 4000);
+		const routeId = `route-${currentSection}-${targetSection}`;
+
+		setActiveRouteId(routeId);
+		setCurrentSection(targetSection);
+
+		setAnimationKey((k) => k + 1);
+
+		// ⛔ TEMPORAIREMENT DÉSACTIVÉ
+		// setTimeout(() => {
+		// 	navigate(config.path);
+		// }, 4000);
 	};
 
 	return (
@@ -52,7 +65,12 @@ function Home() {
 				<p className="subtitle">Mon voyage dans le développement web</p>
 			</div>
 
-			{activeRouteId && <FlightAnimation activeRouteId={activeRouteId} />}
+			{activeRouteId && (
+				<FlightAnimation
+					activeRouteId={activeRouteId}
+					animationKey={animationKey}
+				/>
+			)}
 
 			{markerData.map((marker) => (
 				<Marker

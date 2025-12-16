@@ -21,28 +21,6 @@ export const flightRoutes: FlightRoute[] = [
 		d: "M430 120 Q540 40 640 100",
 		duration: 4,
 	},
-	/*
-
-	{
-		id: "route-about-contact",
-		d: "M240 150 Q330 50 430 120",
-		duration: 4,
-	},
-	{
-		id: "route-about-cv",
-		d: "M240 150 Q330 50 430 120",
-		duration: 4,
-	},
-	{
-		id: "route-skills-about",
-		d: "M240 150 Q330 50 430 120",
-		duration: 4,
-	},
-	{
-		id: "route-skills-projects",
-		d: "M430 120 Q540 40 640 100",
-		duration: 4,
-	},
 	{
 		id: "route-projects-contact",
 		d: "M640 100 Q560 260 480 275",
@@ -53,9 +31,4 @@ export const flightRoutes: FlightRoute[] = [
 		d: "M480 275 Q620 360 720 340",
 		duration: 4,
 	},
-	{
-		id: "route-",
-		d: "M480 275 Q620 360 720 340",
-		duration: 4,
-	},*/
 ];
