@@ -40,11 +40,20 @@ function Home() {
 	};
 
 	useEffect(() => {
-		const savedSection = localStorage.getItem("lastSection") as Section | null;
+		const hasNavigated = localStorage.getItem("hasNavigated");
 
-		if (savedSection) {
-			setCurrentSection(savedSection);
+		if (hasNavigated) {
+			const savedSection = localStorage.getItem(
+				"lastSection",
+			) as Section | null;
+			if (savedSection) {
+				setCurrentSection(savedSection);
+			}
+		} else {
+			setCurrentSection("outside");
 		}
+
+		localStorage.removeItem("hasNavigated");
 	}, []);
 
 	const handleMarkerClick = (label: string) => {
@@ -64,10 +73,12 @@ function Home() {
 
 		setActiveRoute(route);
 		setCurrentSection(targetSection);
+
 		localStorage.setItem("lastSection", targetSection);
+		localStorage.setItem("hasNavigated", "true");
+
 		setAnimationKey((k) => k + 1);
 
-		// ⛔ TEMPORAIREMENT DÉSACTIVÉ
 		setTimeout(() => {
 			navigate(config.path);
 		}, 4000);
