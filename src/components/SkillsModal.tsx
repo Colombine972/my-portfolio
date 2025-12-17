@@ -1,8 +1,14 @@
+import SkillsCarousel from "./SkillsCarousel";
+
 function SkillsModal() {
 	return (
 		<div className="skills-modal">
-			<h1>Skills</h1>
-			<p>Front-end, Back-end, Base de donnée, Outils...</p>
+			<h2 className="skills-title">My Skills</h2>
+			<p className="skills-subtitle">
+				Technologies & outils utilisés dans mon parcours
+			</p>
+
+			<SkillsCarousel />
 		</div>
 	);
 }

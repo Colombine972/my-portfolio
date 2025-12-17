@@ -42,7 +42,7 @@ function Home() {
 	};
 
 	const [isSkillsOpen, setIsSkillsOpen] = useState(false);
-
+	const FLIGHT_DURATION = 4000;
 	useEffect(() => {
 		const hasNavigated = localStorage.getItem("hasNavigated");
 
@@ -61,10 +61,6 @@ function Home() {
 	}, []);
 
 	const handleMarkerClick = (label: string) => {
-		if (label === "Skills") {
-			setIsSkillsOpen(true);
-			return;
-		}
 		const config = markerConfig[label];
 		if (!config) return;
 
@@ -87,9 +83,17 @@ function Home() {
 
 		setAnimationKey((k) => k + 1);
 
+		if (label === "Skills") {
+			setTimeout(() => {
+				setActiveRoute(null);
+				setIsSkillsOpen(true);
+			}, FLIGHT_DURATION);
+			return;
+		}
+
 		setTimeout(() => {
 			navigate(config.path);
-		}, 4000);
+		}, FLIGHT_DURATION);
 	};
 
 	return (
