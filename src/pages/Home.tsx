@@ -1,11 +1,12 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import FlightAnimation from "../components/FlightAnimation";
 import Marker from "../components/Marker";
 import { markerData } from "../data/markerData";
-import FlightAnimation from "../components/FlightAnimation";
 import "../styles/Home.css";
 import type { FlightRoute } from "../data/flightRoutes";
 import { flightRoutes } from "../data/flightRoutes";
+import { markerPositions } from "../data/markerPositions";
 
 type Section = "outside" | "about" | "skills" | "projects" | "contact" | "cv";
 
@@ -39,6 +40,14 @@ function Home() {
 		},
 	};
 
+	useEffect(() => {
+		const savedSection = localStorage.getItem("lastSection") as Section | null;
+
+		if (savedSection) {
+			setCurrentSection(savedSection);
+		}
+	}, []);
+
 	const handleMarkerClick = (label: string) => {
 		const config = markerConfig[label];
 		if (!config) return;
@@ -56,12 +65,13 @@ function Home() {
 
 		setActiveRoute(route);
 		setCurrentSection(targetSection);
+		localStorage.setItem("lastSection", targetSection);
 		setAnimationKey((k) => k + 1);
 
 		// ⛔ TEMPORAIREMENT DÉSACTIVÉ
-		// setTimeout(() => {
-		// 	navigate(config.path);
-		// }, 4000);
+		setTimeout(() => {
+			navigate(config.path);
+		}, 4000);
 	};
 
 	return (
@@ -75,6 +85,23 @@ function Home() {
 
 			{activeRoute && (
 				<FlightAnimation route={activeRoute} animationKey={animationKey} />
+			)}
+
+			{!activeRoute && (
+				<svg
+					role="img"
+					aria-label="avion statique"
+					className="flight-path"
+					viewBox="0 0 1000 500"
+				>
+					<image
+						href="/avion.png"
+						width="80"
+						height="80"
+						x={markerPositions[currentSection].x - 40}
+						y={markerPositions[currentSection].y - 40}
+					/>
+				</svg>
 			)}
 
 			{markerData.map((marker) => (

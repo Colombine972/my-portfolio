@@ -1,7 +1,7 @@
+import { useState } from "react";
+import { Link } from "react-router";
 import ContactForm from "../components/ContactForm";
 import Modal from "../components/Modal";
-import { Link } from "react-router";
-import { useState } from "react";
 import "../styles/CV.css";
 
 function CV() {
@@ -70,6 +70,7 @@ function CV() {
 							Télécharger le CV
 						</a>
 						<button
+							type="button"
 							onClick={() =>
 								openPopup(
 									<iframe

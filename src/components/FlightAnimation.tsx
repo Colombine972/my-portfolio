@@ -9,6 +9,8 @@ type FlightAnimationProps = {
 function FlightAnimation({ route, animationKey }: FlightAnimationProps) {
 	return (
 		<svg
+			role="img"
+			aria-label="trajet de l'avion"
 			key={animationKey}
 			className="flight-path"
 			viewBox="0 0 1000 500"

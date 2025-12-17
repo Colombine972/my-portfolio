@@ -39,6 +39,3 @@ function Marker({ top, left, label, onClick }: MarkerProps) {
 }
 
 export default Marker;
-{
-	/* tout est en rouge car le onClick est undefined */
-}
