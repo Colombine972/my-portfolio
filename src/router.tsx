@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
-import Home from "./pages/Home";
 import CV from "./pages/CV";
+import Home from "./pages/Home";
 
 export const router = createBrowserRouter([
 	{

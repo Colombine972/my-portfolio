@@ -1,8 +1,8 @@
-import { Link } from "react-router";
-import "../styles/CV.css";
 import { useState } from "react";
-import Modal from "../components/Modal";
+import { Link } from "react-router";
 import ContactForm from "../components/ContactForm";
+import Modal from "../components/Modal";
+import "../styles/CV.css";
 
 function CV() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +59,7 @@ function CV() {
 				<div className="australie-bottom-overlay" />
 				<div className="cv-glass-card">
 					<h3>Envie d’échanger ?</h3>
-					<p>Télécharger mon CV, planifier un rendez-vous ou commenter.</p>
+					<p>Télécharger mon CV, planifier un rendez-vous ou une question.</p>
 
 					<div className="cv-glass-actions">
 						<a
@@ -70,6 +70,7 @@ function CV() {
 							Télécharger le CV
 						</a>
 						<button
+							type="button"
 							onClick={() =>
 								openPopup(
 									<iframe
