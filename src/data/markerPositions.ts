@@ -1,4 +1,4 @@
-import type { Section } from "../pages/Home";
+import type { Section } from "../types/sections";
 
 export const markerPositions: Record<Section, { x: number; y: number }> = {
 	outside: { x: -40, y: 150 },

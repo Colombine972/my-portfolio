@@ -1,4 +1,4 @@
-import type { Section } from "../pages/Home";
+import type { Section } from "../types/sections";
 
 export type FlightRoute = {
 	from: Section;

@@ -7,8 +7,7 @@ import "../styles/Home.css";
 import type { FlightRoute } from "../data/flightRoutes";
 import { flightRoutes } from "../data/flightRoutes";
 import { markerPositions } from "../data/markerPositions";
-
-type Section = "outside" | "about" | "skills" | "projects" | "contact" | "cv";
+import type { Section } from "../types/sections";
 
 function Home() {
 	const navigate = useNavigate();
