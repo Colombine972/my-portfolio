@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import FlightAnimation from "../components/FlightAnimation";
 import Marker from "../components/Marker";
+import Modal from "../components/Modal";
+import SkillsModal from "../components/SkillsModal";
 import { markerData } from "../data/markerData";
 import "../styles/Home.css";
 import type { FlightRoute } from "../data/flightRoutes";
@@ -39,6 +41,8 @@ function Home() {
 		},
 	};
 
+	const [isSkillsOpen, setIsSkillsOpen] = useState(false);
+
 	useEffect(() => {
 		const hasNavigated = localStorage.getItem("hasNavigated");
 
@@ -57,6 +61,10 @@ function Home() {
 	}, []);
 
 	const handleMarkerClick = (label: string) => {
+		if (label === "Skills") {
+			setIsSkillsOpen(true);
+			return;
+		}
 		const config = markerConfig[label];
 		if (!config) return;
 
@@ -123,6 +131,10 @@ function Home() {
 					onClick={() => handleMarkerClick(marker.label)}
 				/>
 			))}
+
+			<Modal isOpen={isSkillsOpen} onClose={() => setIsSkillsOpen(false)}>
+				<SkillsModal />
+			</Modal>
 		</div>
 	);
 }
