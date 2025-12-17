@@ -4,12 +4,14 @@ import Marker from "../components/Marker";
 import { markerData } from "../data/markerData";
 import FlightAnimation from "../components/FlightAnimation";
 import "../styles/Home.css";
+import type { FlightRoute } from "../data/flightRoutes";
+import { flightRoutes } from "../data/flightRoutes";
 
 type Section = "outside" | "about" | "skills" | "projects" | "contact" | "cv";
 
 function Home() {
 	const navigate = useNavigate();
-	const [activeRouteId, setActiveRouteId] = useState<string | null>(null);
+	const [activeRoute, setActiveRoute] = useState<FlightRoute | null>(null);
 
 	const [currentSection, setCurrentSection] = useState<Section>("outside");
 
@@ -43,11 +45,17 @@ function Home() {
 
 		const targetSection = config.section;
 
-		const routeId = `route-${currentSection}-${targetSection}`;
+		const route = flightRoutes.find(
+			(r) => r.from === currentSection && r.to === targetSection,
+		);
 
-		setActiveRouteId(routeId);
+		if (!route) {
+			console.warn("Aucune route pour", currentSection, "→", targetSection);
+			return;
+		}
+
+		setActiveRoute(route);
 		setCurrentSection(targetSection);
-
 		setAnimationKey((k) => k + 1);
 
 		// ⛔ TEMPORAIREMENT DÉSACTIVÉ
@@ -65,11 +73,8 @@ function Home() {
 				<p className="subtitle">Mon voyage dans le développement web</p>
 			</div>
 
-			{activeRouteId && (
-				<FlightAnimation
-					activeRouteId={activeRouteId}
-					animationKey={animationKey}
-				/>
+			{activeRoute && (
+				<FlightAnimation route={activeRoute} animationKey={animationKey} />
 			)}
 
 			{markerData.map((marker) => (

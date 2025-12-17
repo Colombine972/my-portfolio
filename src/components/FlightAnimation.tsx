@@ -1,19 +1,12 @@
 import "../styles/FlightAnimation.css";
-import { flightRoutes } from "../data/flightRoutes";
+import type { FlightRoute } from "../data/flightRoutes";
 
 type FlightAnimationProps = {
-	activeRouteId: string;
+	route: FlightRoute;
 	animationKey: number;
 };
 
-function FlightAnimation({
-	activeRouteId,
-	animationKey,
-}: FlightAnimationProps) {
-	const activeRoute = flightRoutes.find((route) => route.id === activeRouteId);
-
-	if (!activeRoute) return null;
-
+function FlightAnimation({ route, animationKey }: FlightAnimationProps) {
 	return (
 		<svg
 			key={animationKey}
@@ -21,22 +14,25 @@ function FlightAnimation({
 			viewBox="0 0 1000 500"
 			preserveAspectRatio="none"
 		>
+			{/* Trajet */}
 			<path
-				id={activeRoute.id}
-				d={activeRoute.d}
+				id={`${route.from}-${route.to}`}
+				d={route.d}
 				fill="none"
 				stroke="#056acfff"
 				strokeWidth="4"
 				strokeDasharray="10 10"
 			/>
+
+			{/* Avion */}
 			<image href="/avion.png" width="80" height="80" x="-40" y="-40">
 				<animateMotion
-					dur={`${activeRoute.duration}s`}
+					key={`${route.from}-${route.to}-${animationKey}`}
+					dur={`${route.duration}s`}
 					fill="freeze"
 					rotate="auto"
-					key={activeRoute.id}
 				>
-					<mpath href={`#${activeRoute.id}`} />
+					<mpath href={`#${route.from}-${route.to}`} />
 				</animateMotion>
 			</image>
 		</svg>
