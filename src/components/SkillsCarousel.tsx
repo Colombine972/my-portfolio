@@ -1,19 +1,16 @@
 import { useState } from "react";
+import Tilt from "react-parallax-tilt";
 import "../styles/SkillsCarousel.css";
 
-const cards = [
-	{
-		label: "Frontend",
-		background: "/IMG_1728.jpg",
-	},
-	{
-		label: "Backend",
-		background: "/IMG_1725.jpg",
-	},
-	{
-		label: "Database",
-		background: "/IMG_1726.jpg",
-	},
+type Card = {
+	label: string;
+	background: string;
+};
+
+const cards: Card[] = [
+	{ label: "FRONTEND", background: "/IMG_1728.jpg" },
+	{ label: "BACKEND", background: "/IMG_1725.jpg" },
+	{ label: "DATABASE", background: "/IMG_1726.jpg" },
 ];
 
 function mod(n: number, m: number) {
@@ -29,13 +26,28 @@ export default function SkillsCarousel() {
 
 	return (
 		<div className="sc-wrap">
-			<button className="sc-arrow left" onClick={prev} aria-label="previous">
+			{/* FLÈCHE GAUCHE */}
+			<button
+				type="button"
+				className="sc-arrow left"
+				onClick={prev}
+				aria-label="Précédent"
+			>
 				‹
 			</button>
 
-			<div className="sc-stage">
+			{/* SCÈNE */}
+			<div
+				className="sc-stage"
+				style={
+					{
+						"--rx": "0deg",
+						"--ry": "0deg",
+					} as React.CSSProperties
+				}
+			>
 				{cards.map((card, i) => {
-					// distance circulaire signée la plus courte (-2..2)
+					// distance circulaire
 					let d = i - active;
 					if (d > total / 2) d -= total;
 					if (d < -total / 2) d += total;
@@ -45,35 +57,83 @@ export default function SkillsCarousel() {
 					return (
 						<div
 							key={card.label}
+							role="button"
+							tabIndex={0}
+							aria-pressed={isActive}
 							className={`sc-card ${isActive ? "active" : ""}`}
-							style={{
-								backgroundImage: `
-                  linear-gradient(
-                    to bottom,
-                    rgba(255,255,255,0.15),
-                    rgba(255,255,255,0.25)
-                  ),
-                  url(${card.background})
-                `,
-								transform: `
-                  translateX(${d * 275}px)
-                  translateZ(${isActive ? 120 : 40}px)
-                  rotateY(${d * 22}deg)
-                  scale(${isActive ? 1.15 : 0.9})
-                `,
-								opacity: isActive ? 1 : 0.55,
-								zIndex: 10 - Math.abs(d),
-								filter: Math.abs(d) >= 2 ? "blur(0.6px)" : "none",
-							}}
+							style={
+								{
+									transform: `
+                  					translateX(${d * 275}px)
+                  					translateZ(${isActive ? 120 : 40}px)
+                  					rotateY(${d * 22}deg)
+                  					scale(${isActive ? 1.15 : 0.9})
+                				`,
+									opacity: isActive ? 1 : 0.85,
+									zIndex: 10 - Math.abs(d),
+								} as React.CSSProperties
+							}
 							onClick={() => setActive(i)}
+							onKeyDown={(e) => {
+								if (e.key === "Enter" || e.key === " ") {
+									setActive(i);
+								}
+							}}
 						>
-							{card.label}
+							{isActive ? (
+								<Tilt
+									className="sc-tilt"
+									tiltMaxAngleX={8}
+									tiltMaxAngleY={8}
+									perspective={900}
+									transitionSpeed={800}
+									scale={1.03}
+									glareEnable={false}
+									onMove={({ tiltAngleX, tiltAngleY }) => {
+										const stage = document.querySelector(
+											".sc-stage",
+										) as HTMLElement;
+										if (!stage) return;
+
+										stage.style.setProperty("--rx", `${tiltAngleX}deg`);
+										stage.style.setProperty("--ry", `${tiltAngleY}deg`);
+									}}
+									onLeave={() => {
+										const stage = document.querySelector(
+											".sc-stage",
+										) as HTMLElement;
+										if (!stage) return;
+
+										stage.style.setProperty("--rx", "0deg");
+										stage.style.setProperty("--ry", "0deg");
+									}}
+								>
+									<div
+										className="sc-card-inner"
+										style={{ backgroundImage: `url(${card.background})` }}
+									/>
+								</Tilt>
+							) : (
+								<div
+									className="sc-card-inner"
+									style={{ backgroundImage: `url(${card.background})` }}
+								/>
+							)}
 						</div>
 					);
 				})}
+
+				{/* TITRE CINÉMATIQUE */}
+				<div className="sc-title show">{cards[active].label}</div>
 			</div>
 
-			<button className="sc-arrow right" onClick={next} aria-label="next">
+			{/* FLÈCHE DROITE */}
+			<button
+				type="button"
+				className="sc-arrow right"
+				onClick={next}
+				aria-label="Suivant"
+			>
 				›
 			</button>
 		</div>
