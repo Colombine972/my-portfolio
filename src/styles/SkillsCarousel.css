@@ -1,28 +1,113 @@
-.carousel {
+.sc-wrap {
+	width: 100%;
+	height: 100%;
+	position: relative;
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 1.5rem;
-	margin-top: 2rem;
 }
 
-.carousel-track {
-	width: 260px;
-	height: 320px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+/* ============================= */
+/* SCÈNE 3D                     */
+/* ============================= */
+
+.sc-stage {
+	position: relative;
+
+	width: min(900px, 95%);
+	height: 460px;
+
+	display: grid;
+	place-items: center;
+
+	/* 🔥 Clé du rendu coverflow */
+	perspective: 1200px;
+	perspective-origin: center;
 }
 
-.carousel-btn {
-	all: unset;
+/* ============================= */
+/* CARTES                       */
+/* ============================= */
+
+.sc-card {
+	position: absolute;
 	cursor: pointer;
-	font-size: 2.5rem;
-	color: black;
-	padding: 0.5rem;
-	transition: transform 0.2s ease;
+
+	width: 260px;
+	height: 340px;
+
+	border-radius: 28px;
+	background: rgba(255, 255, 255, 0.95);
+
+	background-size: cover;
+	background-position: center;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 1.4rem;
+	font-weight: 700;
+	color: #1f2d3d;
+
+	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+
+	/* 🔥 Essentiel pour la 3D */
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+
+	/* 🎬 Animation cinématique */
+	transition:
+		transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
+		opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
+		filter 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
+		box-shadow 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+	will-change: transform, opacity;
 }
 
-.carousel-btn:hover {
-	transform: scale(1.2);
+/* Carte active */
+.sc-card.active {
+	box-shadow:
+		0 40px 80px rgba(0, 0, 0, 0.22),
+		0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+/* ============================= */
+/* FLÈCHES                      */
+/* ============================= */
+
+.sc-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+
+	border: none;
+	background: none;
+	cursor: pointer;
+
+	font-size: 3rem;
+	font-weight: 300;
+	color: #1f2d3d;
+
+	z-index: 20;
+	user-select: none;
+
+	transition:
+		opacity 0.25s ease,
+		transform 0.25s ease;
+}
+
+.sc-arrow:hover {
+	opacity: 0.7;
+	transform: translateY(-50%) scale(1.05);
+}
+
+.sc-arrow.left {
+	left: 24px;
+}
+
+.sc-arrow.right {
+	right: 24px;
 }

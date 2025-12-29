@@ -66,6 +66,12 @@ function Home() {
 
 		const targetSection = config.section;
 
+		// 👉 Cas : on clique sur la section actuelle (Skills)
+		if (label === "Skills" && currentSection === "skills") {
+			setIsSkillsOpen(true);
+			return;
+		}
+
 		const route = flightRoutes.find(
 			(r) => r.from === currentSection && r.to === targetSection,
 		);

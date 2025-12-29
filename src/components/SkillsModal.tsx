@@ -1,16 +1,18 @@
 import SkillsCarousel from "./SkillsCarousel";
+import "../styles/skillsModal.css";
 
-function SkillsModal() {
+export default function SkillsModal() {
 	return (
 		<div className="skills-modal">
-			<h2 className="skills-title">My Skills</h2>
-			<p className="skills-subtitle">
-				Technologies & outils utilisés dans mon parcours
-			</p>
+			<div className="skills-bg">
+				<div className="skills-stag">
+					<h2 className="skills-title">Mes compétences</h2>
 
-			<SkillsCarousel />
+					<div className="skills-other">
+						<SkillsCarousel />
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }
-
-export default SkillsModal;

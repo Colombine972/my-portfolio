@@ -5,7 +5,6 @@ function Modal({ isOpen, onClose, children }) {
 
 	return (
 		<div className="modal-overlay" onClick={onClose}>
-			{/* CROIX AU NIVEAU DE L'OVERLAY */}
 			<button
 				type="button"
 				className="modal-close"
@@ -16,7 +15,8 @@ function Modal({ isOpen, onClose, children }) {
 			</button>
 
 			<div className="modal-content" onClick={(e) => e.stopPropagation()}>
-				{children}
+				{/* ✅ wrapper qui porte le layout */}
+				<div className="modal-inner">{children}</div>
 			</div>
 		</div>
 	);
